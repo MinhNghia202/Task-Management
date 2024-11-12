@@ -1,10 +1,16 @@
 package com.minhnghia.TaskManagement.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "Task")
 public class Task {
     @Id
@@ -22,68 +28,10 @@ public class Task {
     private String status;
 
     @Column(name = "created_at")
-    private Date createAt;
+    private LocalDate createAt = LocalDate.now();
 
     @Column(name = "due_date")
-    private Date dueDate;
+    private LocalDate dueDate;
 
-    public Task() {
-    }
 
-    public Task(String id, String title, String description, String status, Date dueDate, Date createAt) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.status = status;
-        this.dueDate = dueDate;
-        this.createAt = createAt;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Date getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
-    }
-
-    public Date getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(Date dueDate) {
-        this.dueDate = dueDate;
-    }
 }
