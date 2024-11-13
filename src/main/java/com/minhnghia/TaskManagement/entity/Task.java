@@ -28,10 +28,15 @@ public class Task {
     private String status;
 
     @Column(name = "created_at")
-    private LocalDate createAt = LocalDate.now();
+    private LocalDate createAt;
 
     @Column(name = "due_date")
     private LocalDate dueDate;
 
-
+    @PrePersist
+    public void prePersist() {
+        if (this.createAt == null) {
+            this.createAt = LocalDate.now();
+        }
+    }
 }
